@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Categorisation System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Transaction Categorisation System</h1>
+
+    <!-- Role Selection -->
+    <section id="role_selection" class="section">
+        <h2>Select Your Role</h2>
+        <div class="role-buttons">
+            <button class="role-btn" onclick="selectRole('user')">User</button>
+            <button class="role-btn" onclick="selectRole('admin')">Admin</button>
+        </div>
+    </section>
+
+    <!-- Admin Login -->
+    <section id="admin_login" class="section hidden">
+        <h2>Admin Login</h2>
+        <input type="password" id="admin_password" placeholder="Enter admin password" onkeyup="checkEnter(event,'loginAdmin')">
+        <button onclick="loginAdmin()">Login</button>
+        <p id="admin_login_result" class="error"></p>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="admin_dashboard" class="section hidden">
+        <h2>Admin Dashboard</h2>
+
+        <!-- Add Transaction -->
+        <div class="card">
+            <h3>Add Transaction</h3>
+            <input type="text" id="new_transaction" placeholder="Transaction string">
+            <input type="text" id="new_category" placeholder="Category">
+            <button onclick="addTransaction()">Add</button>
+            <p id="add_result" class="result"></p>
+        </div>
+
+        <!-- Update Category -->
+        <div class="card">
+            <h3>Update Category Name</h3>
+            <input type="text" id="old_category" placeholder="Old category name">
+            <input type="text" id="new_category_name" placeholder="New category name">
+            <button onclick="updateCategory()">Update</button>
+            <p id="update_result" class="result"></p>
+        </div>
+
+        <!-- Quick Predict -->
+        <div class="card">
+            <h3>Quick Predict</h3>
+            <input type="text" id="transaction_input_admin" placeholder="Enter transaction string" oninput="predictTransaction('admin')">
+            <p id="prediction_result_admin" class="result"></p>
+        </div>
+    </section>
+
+    <!-- User Quick Predict -->
+    <section id="user_dashboard" class="section hidden">
+        <h2>Quick Predict</h2>
+        <div class="card">
+            <input type="text" id="transaction_input_user" placeholder="Enter transaction string" oninput="predictTransaction('user')">
+            <p id="prediction_result_user" class="result"></p>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
